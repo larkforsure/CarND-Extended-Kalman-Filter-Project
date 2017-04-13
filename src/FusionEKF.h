@@ -36,7 +36,7 @@ private:
   bool is_initialized_;
 
   // previous timestamp
-  long previous_timestamp_;
+  unsigned long long previous_timestamp_;
 
   //acceleration noise components
   double noise_ax;
