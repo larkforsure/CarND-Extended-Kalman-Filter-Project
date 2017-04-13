@@ -19,10 +19,10 @@ public:
   */
   static Eigen::MatrixXd CalculateJacobian(const Eigen::VectorXd& x_state);
 
-  static float normalize_angle(float angle);
+  static double normalize_angle(double angle);
 };
 
-#define ZERO (1e-9)
-#define PI  3.14159265f
+#define ZERO (1e-6)
+#define PI 3.1415926535897932384626433832795
 
 #endif /* TOOLS_H_ */

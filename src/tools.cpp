@@ -44,19 +44,19 @@ MatrixXd Tools::CalculateJacobian(const VectorXd& x_state) {
    */
     MatrixXd Hj(3,4);
     //recover state parameters
-    float px = x_state(0);
-    float py = x_state(1);
-    float vx = x_state(2);
-    float vy = x_state(3);
+    double px = x_state(0);
+    double py = x_state(1);
+    double vx = x_state(2);
+    double vy = x_state(3);
 
     if(fabs(px) < ZERO) {
         std::cout << "Warning: px too small, hack it to : " << ZERO << std::endl;
         px = ZERO;
     }
     //pre-compute a set of terms to avoid repeated calculation
-    float c1 = px*px + py*py;
-    float c2 = sqrt(c1);
-    float c3 = (c1*c2);
+    double c1 = px*px + py*py;
+    double c2 = sqrt(c1);
+    double c3 = (c1*c2);
 
     //check division by zero
     
@@ -69,7 +69,7 @@ MatrixXd Tools::CalculateJacobian(const VectorXd& x_state) {
 }
 
 // need this when use atan2
-float Tools::normalize_angle(float angle) {
+double Tools::normalize_angle(double angle) {
     //return atan2(sin(angle)/cos(angle));
     return ((angle > PI) ? angle - 2*PI : ((angle < -1*PI) ? angle + 2*PI : angle));
 }

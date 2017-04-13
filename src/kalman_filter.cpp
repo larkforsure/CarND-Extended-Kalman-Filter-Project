@@ -73,19 +73,19 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
 // h here, Hj is caculated by Tools::CalculateJacobian 
 VectorXd KalmanFilter::h(const VectorXd &x) {
     // extract position and velocity
-    float px = x(0);
-    float py = x(1);
-    float vx = x(2);
-    float vy = x(3);
+    double px = x(0);
+    double py = x(1);
+    double vx = x(2);
+    double vy = x(3);
 
     if(fabs(px) < ZERO) {
         std::cout << "Warning: px too small, hack it to : " << ZERO << std::endl;
         px = ZERO;
     }
 
-    float rho = sqrt(px*px + py*py);
-    float theta = atan2(py, px);  // arc tangent(2) of y/x, in the interval [-pi,+pi] radians. 
-    float rho_dot = (px*vx + py*vy) / rho;
+    double rho = sqrt(px*px + py*py);
+    double theta = atan2(py, px);  // arc tangent(2) of y/x, in the interval [-pi,+pi] radians. 
+    double rho_dot = (px*vx + py*vy) / rho;
 
     VectorXd hx = VectorXd(3);
     hx << rho, theta, rho_dot;
